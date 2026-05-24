@@ -14,6 +14,15 @@ Historique des **changements majeurs** apportés au guide Mowgli / OpenMower.
 
 ## 🔄 Historique des modifications
 
+### 🗓️ 24 mai 2026 (suite)
+
+- ✅ **Recherche locale** ajoutée sur l'ensemble du site (plugin `@easyops-cn/docusaurus-search-local`, offline, FR+EN).
+- ✅ **Page Dépannage convertie en FAQ** — chaque problème est désormais un accordéon dépliable (`<details>`), compatible avec la recherche.
+- ✅ **3 nouvelles entrées dépannage** : hub USB alimenté requis, robot ne charge plus (pin connecteur brûlé), moteur de lame inactif (rebrancher tous les câbles carte mère).
+- ✅ **Workflow CI** mis à jour : Node.js 18 → 20 (requis par le plugin de recherche).
+
+---
+
 ### 🗓️ 24 mai 2026
 
 - ✅ **Internationalisation complète (FR/EN)** — 16 pages traduites en anglais, bascule de langue fonctionnelle.
