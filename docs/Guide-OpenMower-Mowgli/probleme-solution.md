@@ -9,15 +9,16 @@ parent: "🏠 Guide OpenMower"
 
 import links from '@site/src/data/links';
 
-# 🛠️ Problèmes et Solutions
+# 🛠️ FAQ — Problèmes et Solutions
 
-Cette page regroupe les problèmes couramment rencontrés ainsi que leurs solutions et des astuces pour optimiser votre Mowgli.
+Cette page regroupe les problèmes couramment rencontrés ainsi que leurs solutions et des astuces pour optimiser votre Mowgli. Cliquez sur une question pour afficher la réponse.
 
 ---
 
 ## 🔧 Problèmes techniques
 
-### ❌ Le robot ne démarre pas
+<details>
+<summary>❌ Le robot ne démarre pas</summary>
 
 **Symptômes :** Le robot reste inerte après mise sous tension.
 
@@ -27,9 +28,12 @@ Cette page regroupe les problèmes couramment rencontrés ainsi que leurs soluti
 - Les conteneurs Docker sont bien démarrés (`sudo docker compose ps`)
 - Le firmware a été correctement flashé sur la carte STM32
 
+</details>
+
 ---
 
-### 📶 GPS instable ou déconnexions fréquentes
+<details>
+<summary>📶 GPS instable ou déconnexions fréquentes</summary>
 
 **Symptômes :** Le statut GPS alterne entre Fix et No Fix, ou se déconnecte aléatoirement.
 
@@ -40,9 +44,12 @@ Cette page regroupe les problèmes couramment rencontrés ainsi que leurs soluti
 4. Assurez-vous que l'antenne GPS a une **vue dégagée sur le ciel**, sans obstacles métalliques proches
 5. Éloignez le câble USB GPS des câbles moteurs (perturbations électromagnétiques)
 
+</details>
+
 ---
 
-### 🚫 Le GPS n'atteint pas le statut RTK Fix
+<details>
+<summary>🚫 Le GPS n'atteint pas le statut RTK Fix</summary>
 
 **Symptômes :** Le GPS reste en `GPS Fix` ou `Float` mais n'atteint jamais `RTK Fix`.
 
@@ -59,9 +66,12 @@ Cette page regroupe les problèmes couramment rencontrés ainsi que leurs soluti
 Le robot **ne peut pas fonctionner en sécurité** sans un statut RTK Fix. Ne lancez jamais une tonte sans avoir vérifié ce point.
 :::
 
+</details>
+
 ---
 
-### 📡 Problèmes de configuration ou de signal F9P
+<details>
+<summary>📡 Problèmes de configuration ou de signal F9P</summary>
 
 :::tip Retour d'expérience terrain
 Les points suivants sont issus d'une expérience réelle avec le module F9P. Ce sont des causes fréquentes souvent négligées.
@@ -102,9 +112,12 @@ Certains emplacements de jardin rendent le RTK Fix difficile à obtenir de faço
 - Repositionnez le robot dans une zone plus dégagée pour tester
 - Consultez la carte du ciel dans l'interface F9P (via u-center) pour visualiser les satellites reçus
 
+</details>
+
 ---
 
-### 🔌 Réinitialisation des ports USB du Raspberry Pi (sans reboot)
+<details>
+<summary>🔌 Réinitialisation des ports USB du Raspberry Pi (sans reboot)</summary>
 
 **Symptômes :** Le GPS ou le Mowgli ne sont plus reconnus après un incident, sans reboot possible.
 
@@ -121,9 +134,32 @@ sudo sh -c 'echo -n "0000:01:00.0" > /sys/bus/pci/drivers/xhci_hcd/bind'
 
 > Si les solutions ci-dessus ne fonctionnent pas, un redémarrage complet du Raspberry Pi reste la solution la plus sûre.
 
+</details>
+
 ---
 
-### 🔗 ST-Link non détecté par Visual Studio Code
+<details>
+<summary>🔌 Hub USB non reconnu ou instable</summary>
+
+**Symptômes :** Le GPS ou le Mowgli ne sont plus reconnus quand un hub USB est utilisé, ou le comportement devient aléatoire.
+
+**Cause :** Le Raspberry Pi fournit une tension limitée sur ses ports USB. Certains hubs passifs (sans alimentation propre) ne reçoivent pas assez de courant, ce qui provoque des déconnexions ou des non-détections des périphériques.
+
+**Solutions :**
+- Privilégiez un **hub USB alimenté** (avec alimentation externe)
+- Testez sans hub en connectant directement le GPS et le Mowgli sur les ports USB du Raspberry Pi
+- Si un hub est indispensable, choisissez un modèle avec **alimentation propre ≥ 2A**
+
+:::tip
+Tous les hubs USB ne se valent pas. Préférez les modèles avec une alimentation externe dédiée pour éviter les problèmes de puissance.
+:::
+
+</details>
+
+---
+
+<details>
+<summary>🔗 ST-Link non détecté par Visual Studio Code</summary>
 
 **Symptômes :** VSCode ne reconnaît pas le programmeur ST-Link lors de la compilation/injection du firmware.
 
@@ -133,9 +169,55 @@ sudo sh -c 'echo -n "0000:01:00.0" > /sys/bus/pci/drivers/xhci_hcd/bind'
 3. **Débranchez / rebranchez** le ST-Link
 4. Utilisez **STM32CubeProgrammer** à la place de VSCode — il permet également de vérifier si le pilote ST-Link est correctement installé et si la sonde est fonctionnelle (détection automatique à l'ouverture du logiciel)
 
+</details>
+
 ---
 
-### 💥 Crash lors de la fusion de cartes (map.bag)
+<details>
+<summary>🔋 Le robot ne charge plus</summary>
+
+**Symptômes :** Le robot posé sur la base de charge ne se charge pas, voyant de charge absent ou aucune tension mesurée.
+
+**Cause possible :** Un ou plusieurs **pins du connecteur d'alimentation** ont grillé suite à un mauvais câblage, une soudure froide ou un sertissage insuffisant.
+
+**Vérifications :**
+1. Inspectez visuellement tous les connecteurs : **connecteurs d'alimentation ET connecteurs moteur**
+2. Recherchez des traces de brûlure, de noircissement ou de métal fondu sur les pins
+3. Vérifiez que chaque connecteur est **bien enfoncé** dans son boîtier (clipsé)
+4. Mesurez la tension aux bornes du connecteur de charge avec un multimètre
+
+:::warning
+Un connecteur mal inséré ou partiellement sertis peut générer une résistance de contact élevée qui fait chauffer et brûler les pins. Vérifiez systématiquement **tous** les connecteurs, pas seulement celui de charge.
+:::
+
+</details>
+
+---
+
+<details>
+<summary>⚙️ Le moteur de lame ne tourne pas</summary>
+
+**Symptômes :** Le robot démarre, se déplace, mais le moteur de lame reste inactif.
+
+**Solution connue :** Débrancher et rebrancher tous les câbles de la carte mère résout le problème dans la grande majorité des cas.
+
+**Procédure :**
+1. **Éteignez** le robot et débranchez l'alimentation
+2. Débranchez **tous les câbles** de la carte mère : câbles d'alimentation, câbles moteurs, câbles de communication
+3. Attendez 30 secondes
+4. Rebranchez **tous les câbles** en vérifiant que chaque connecteur est bien encliqueté
+5. Remettez le robot sous tension et testez
+
+:::tip Retour d'expérience
+Cette procédure a résolu le problème chez plusieurs utilisateurs sans qu'une cause matérielle spécifique ne soit identifiée. Une connexion intermittente sur un des câbles moteur est la cause la plus probable.
+:::
+
+</details>
+
+---
+
+<details>
+<summary>💥 Crash lors de la fusion de cartes (map.bag)</summary>
 
 **Symptômes :** L'application plante ou devient instable après avoir fusionné plusieurs zones de tonte.
 
@@ -157,9 +239,12 @@ cp config/om/map.bag config/om/map.bag.backup
 ```
 :::
 
+</details>
+
 ---
 
-### ⚠️ Ne flasher que la carte mère — jamais le panneau
+<details>
+<summary>⚠️ Ne flasher que la carte mère — jamais le panneau</summary>
 
 :::danger Risque de dommage irréversible
 Seule la **carte mère** (STM32) doit être flashée avec le firmware Mowgli. C'est elle qui gère ensuite la communication avec le tableau de bord (clavier et voyants).
@@ -171,71 +256,23 @@ Firmwares validés pour la carte mère uniquement :
 - **Yardforce 500B** (clavier + voyants actifs) → <a href={links.firmware.nekraus500bPanel} target="_blank">firmware Nekraus — FeaturePanel</a>
 :::
 
----
-
-### 🔌 Hub USB non reconnu ou instable
-
-**Symptômes :** Le GPS ou le Mowgli ne sont plus reconnus quand un hub USB est utilisé, ou le comportement devient aléatoire.
-
-**Cause :** Le Raspberry Pi fournit une tension limitée sur ses ports USB. Certains hubs passifs (sans alimentation propre) ne reçoivent pas assez de courant, ce qui provoque des déconnexions ou des non-détections des périphériques.
-
-**Solutions :**
-- Privilégiez un **hub USB alimenté** (avec alimentation externe)
-- Testez sans hub en connectant directement le GPS et le Mowgli sur les ports USB du Raspberry Pi
-- Si un hub est indispensable, choisissez un modèle avec **alimentation propre ≥ 2A**
-
-:::tip
-Tous les hubs USB ne se valent pas. Préférez les modèles avec une alimentation externe dédiée pour éviter les problèmes de puissance.
-:::
-
----
-
-### 🔋 Le robot ne charge plus
-
-**Symptômes :** Le robot posé sur la base de charge ne se charge pas, voyant de charge absent ou aucune tension mesurée.
-
-**Cause possible :** Un ou plusieurs **pins du connecteur d'alimentation** ont grillé suite à un mauvais câblage, une soudure froide ou un sertissage insuffisant.
-
-**Vérifications :**
-1. Inspectez visuellement tous les connecteurs : **connecteurs d'alimentation ET connecteurs moteur**
-2. Recherchez des traces de brûlure, de noircissement ou de métal fondu sur les pins
-3. Vérifiez que chaque connecteur est **bien enfoncé** dans son boîtier (clipsé)
-4. Mesurez la tension aux bornes du connecteur de charge avec un multimètre
-
-:::warning
-Un connecteur mal inséré ou partiellement sertis peut générer une résistance de contact élevée qui fait chauffer et brûler les pins. Vérifiez systématiquement **tous** les connecteurs, pas seulement celui de charge.
-:::
-
----
-
-### ⚙️ Le moteur de lame ne tourne pas
-
-**Symptômes :** Le robot démarre, se déplace, mais le moteur de lame reste inactif.
-
-**Solution connue :** Débrancher et rebrancher tous les câbles de la carte mère résout le problème dans la grande majorité des cas.
-
-**Procédure :**
-1. **Éteignez** le robot et débranchez l'alimentation
-2. Débranchez **tous les câbles** de la carte mère : câbles d'alimentation, câbles moteurs, câbles de communication
-3. Attendez 30 secondes
-4. Rebranchez **tous les câbles** en vérifiant que chaque connecteur est bien encliqueté
-5. Remettez le robot sous tension et testez
-
-:::tip Retour d'expérience
-Cette procédure a résolu le problème chez plusieurs utilisateurs sans qu'une cause matérielle spécifique ne soit identifiée. Une connexion intermittente sur un des câbles moteur est la cause la plus probable.
-:::
+</details>
 
 ---
 
 ## 💡 Astuces & Optimisations
 
-### 🧠 Amélioration de la traction sur terrain pentu
+<details>
+<summary>🧠 Amélioration de la traction sur terrain pentu</summary>
 
 L'ajout de **roues lestées** peut améliorer significativement l'adhérence sur terrain en pente. Les fichiers STL sont disponibles dans la section [Pièces à imprimer en 3D](/docs/Guide-OpenMower-Mowgli/impression-3d).
 
+</details>
+
 ---
 
-### 🔍 Diagnostic rapide via les logs Docker
+<details>
+<summary>🔍 Diagnostic rapide via les logs Docker</summary>
 
 Consultez les logs en temps réel pour identifier l'origine d'un blocage :
 
@@ -246,15 +283,20 @@ sudo docker compose logs -f
 
 Pour quitter : `Ctrl + C`
 
+</details>
+
 ---
 
-### 📡 Vérifier la connexion NTRIP
+<details>
+<summary>📡 Vérifier la connexion NTRIP</summary>
 
 Depuis l'interface web (port `4006`), le statut de la connexion NTRIP est visible en temps réel. En cas de déconnexion, redémarrez les conteneurs :
 
 ```sh
 sudo docker compose down && sudo docker compose up -d
 ```
+
+</details>
 
 ---
 

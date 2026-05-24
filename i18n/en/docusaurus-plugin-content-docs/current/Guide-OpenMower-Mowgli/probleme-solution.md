@@ -8,15 +8,16 @@ parent: "🏠 OpenMower Guide"
 
 import links from '@site/src/data/links';
 
-# 🛠️ Troubleshooting
+# 🛠️ FAQ — Troubleshooting
 
-This page compiles commonly encountered issues along with their solutions and tips to optimise your Mowgli.
+This page compiles commonly encountered issues along with their solutions and tips to optimise your Mowgli. Click a question to expand the answer.
 
 ---
 
 ## 🔧 Technical Issues
 
-### ❌ Robot won't start
+<details>
+<summary>❌ Robot won't start</summary>
 
 **Symptoms:** The robot remains inert after powering on.
 
@@ -26,9 +27,12 @@ This page compiles commonly encountered issues along with their solutions and ti
 - Docker containers are properly started (`sudo docker compose ps`)
 - Firmware has been correctly flashed onto the STM32 board
 
+</details>
+
 ---
 
-### 📶 Unstable GPS or frequent disconnections
+<details>
+<summary>📶 Unstable GPS or frequent disconnections</summary>
 
 **Symptoms:** GPS status alternates between Fix and No Fix, or disconnects randomly.
 
@@ -39,9 +43,12 @@ This page compiles commonly encountered issues along with their solutions and ti
 4. Make sure the GPS antenna has a **clear view of the sky**, with no nearby metal obstacles
 5. Keep the GPS USB cable away from motor cables (electromagnetic interference)
 
+</details>
+
 ---
 
-### 🚫 GPS cannot reach RTK Fix status
+<details>
+<summary>🚫 GPS cannot reach RTK Fix status</summary>
 
 **Symptoms:** GPS stays on `GPS Fix` or `Float` but never reaches `RTK Fix`.
 
@@ -58,9 +65,12 @@ This page compiles commonly encountered issues along with their solutions and ti
 The robot **cannot operate safely** without RTK Fix status. Never start a mow without verifying this first.
 :::
 
+</details>
+
 ---
 
-### 📡 F9P configuration or signal issues
+<details>
+<summary>📡 F9P configuration or signal issues</summary>
 
 :::tip Field experience
 The following points come from real experience with the F9P module. These are frequent causes that are often overlooked.
@@ -101,9 +111,12 @@ Some garden locations make stable RTK Fix difficult to obtain:
 - Reposition the robot in a more open area to test
 - Consult the sky view map in the F9P interface (via u-center) to visualise received satellites
 
+</details>
+
 ---
 
-### 🔌 Raspberry Pi USB port reset (without reboot)
+<details>
+<summary>🔌 Raspberry Pi USB port reset (without reboot)</summary>
 
 **Symptoms:** GPS or Mowgli are no longer recognised after an incident, without possibility of rebooting.
 
@@ -120,9 +133,32 @@ sudo sh -c 'echo -n "0000:01:00.0" > /sys/bus/pci/drivers/xhci_hcd/bind'
 
 > If the above solutions do not work, a full Raspberry Pi reboot remains the safest solution.
 
+</details>
+
 ---
 
-### 🔗 ST-Link not detected by Visual Studio Code
+<details>
+<summary>🔌 USB hub not recognised or unstable</summary>
+
+**Symptoms:** GPS or Mowgli are no longer recognised when using a USB hub, or behaviour becomes erratic.
+
+**Cause:** The Raspberry Pi provides limited power on its USB ports. Passive hubs (without their own power supply) may not receive enough current, causing device disconnections or non-detection.
+
+**Solutions:**
+- Use a **powered USB hub** (with external power supply)
+- Test without a hub by connecting the GPS and Mowgli directly to the Raspberry Pi's USB ports
+- If a hub is essential, choose a model with a **dedicated power supply ≥ 2A**
+
+:::tip
+Not all USB hubs are equal. Prefer models with a dedicated external power supply to avoid power-related issues.
+:::
+
+</details>
+
+---
+
+<details>
+<summary>🔗 ST-Link not detected by Visual Studio Code</summary>
 
 **Symptoms:** VSCode does not recognise the ST-Link programmer during firmware compilation/injection.
 
@@ -132,9 +168,55 @@ sudo sh -c 'echo -n "0000:01:00.0" > /sys/bus/pci/drivers/xhci_hcd/bind'
 3. **Unplug / replug** the ST-Link
 4. Use **STM32CubeProgrammer** instead of VSCode — it also lets you verify whether the ST-Link driver is correctly installed and whether the probe is functional (automatic detection when the software opens)
 
+</details>
+
 ---
 
-### 💥 Crash during map merge (map.bag)
+<details>
+<summary>🔋 Robot won't charge</summary>
+
+**Symptoms:** Robot placed on the charging base does not charge — no charge indicator light or no voltage detected.
+
+**Possible cause:** One or more **power connector pins have burned** due to incorrect wiring, a cold solder joint, or insufficient crimping.
+
+**Checks:**
+1. Visually inspect all connectors: **power connectors AND motor connectors**
+2. Look for burn marks, blackening, or melted metal on pins
+3. Verify that each connector is **fully seated** in its housing (clipped in)
+4. Measure voltage at the charge connector terminals with a multimeter
+
+:::warning
+A poorly inserted or partially crimped connector can generate high contact resistance, causing pins to overheat and burn. Always check **all** connectors, not just the charge connector.
+:::
+
+</details>
+
+---
+
+<details>
+<summary>⚙️ Blade motor not spinning</summary>
+
+**Symptoms:** Robot starts and moves, but the blade motor remains inactive.
+
+**Known fix:** Unplugging and replugging all cables from the motherboard resolves the issue in the vast majority of cases.
+
+**Procedure:**
+1. **Turn off** the robot and disconnect the power supply
+2. Unplug **all cables** from the motherboard: power cables, motor cables, communication cables
+3. Wait 30 seconds
+4. Replug **all cables**, making sure each connector clicks into place
+5. Power the robot back on and test
+
+:::tip Field experience
+This procedure has resolved the issue for multiple users without identifying a specific hardware cause. An intermittent connection on one of the motor cables is the most likely culprit.
+:::
+
+</details>
+
+---
+
+<details>
+<summary>💥 Crash during map merge (map.bag)</summary>
 
 **Symptoms:** The application crashes or becomes unstable after merging multiple mowing zones.
 
@@ -156,9 +238,12 @@ cp config/om/map.bag config/om/map.bag.backup
 ```
 :::
 
+</details>
+
 ---
 
-### ⚠️ Only flash the motherboard — never the panel
+<details>
+<summary>⚠️ Only flash the motherboard — never the panel</summary>
 
 :::danger Risk of irreversible damage
 Only the **motherboard** (STM32) should be flashed with the Mowgli firmware. It then manages the communication with the dashboard (keypad and indicator lights).
@@ -170,71 +255,23 @@ Validated firmwares for the motherboard only:
 - **Yardforce 500B** (active keypad + indicator lights) → <a href={links.firmware.nekraus500bPanel} target="_blank">Nekraus firmware — FeaturePanel</a>
 :::
 
----
-
-### 🔌 USB hub not recognised or unstable
-
-**Symptoms:** GPS or Mowgli are no longer recognised when using a USB hub, or behaviour becomes erratic.
-
-**Cause:** The Raspberry Pi provides limited power on its USB ports. Passive hubs (without their own power supply) may not receive enough current, causing device disconnections or non-detection.
-
-**Solutions:**
-- Use a **powered USB hub** (with external power supply)
-- Test without a hub by connecting the GPS and Mowgli directly to the Raspberry Pi's USB ports
-- If a hub is essential, choose a model with a **dedicated power supply ≥ 2A**
-
-:::tip
-Not all USB hubs are equal. Prefer models with a dedicated external power supply to avoid power-related issues.
-:::
-
----
-
-### 🔋 Robot won't charge
-
-**Symptoms:** Robot placed on the charging base does not charge — no charge indicator light or no voltage detected.
-
-**Possible cause:** One or more **power connector pins have burned** due to incorrect wiring, a cold solder joint, or insufficient crimping.
-
-**Checks:**
-1. Visually inspect all connectors: **power connectors AND motor connectors**
-2. Look for burn marks, blackening, or melted metal on pins
-3. Verify that each connector is **fully seated** in its housing (clipped in)
-4. Measure voltage at the charge connector terminals with a multimeter
-
-:::warning
-A poorly inserted or partially crimped connector can generate high contact resistance, causing pins to overheat and burn. Always check **all** connectors, not just the charge connector.
-:::
-
----
-
-### ⚙️ Blade motor not spinning
-
-**Symptoms:** Robot starts and moves, but the blade motor remains inactive.
-
-**Known fix:** Unplugging and replugging all cables from the motherboard resolves the issue in the vast majority of cases.
-
-**Procedure:**
-1. **Turn off** the robot and disconnect the power supply
-2. Unplug **all cables** from the motherboard: power cables, motor cables, communication cables
-3. Wait 30 seconds
-4. Replug **all cables**, making sure each connector clicks into place
-5. Power the robot back on and test
-
-:::tip Field experience
-This procedure has resolved the issue for multiple users without identifying a specific hardware cause. An intermittent connection on one of the motor cables is the most likely culprit.
-:::
+</details>
 
 ---
 
 ## 💡 Tips & Optimisations
 
-### 🧠 Improve traction on sloped terrain
+<details>
+<summary>🧠 Improve traction on sloped terrain</summary>
 
 Adding **weighted wheels** can significantly improve grip on sloped terrain. The STL files are available in the [3D Printed Parts](/docs/Guide-OpenMower-Mowgli/impression-3d) section.
 
+</details>
+
 ---
 
-### 🔍 Quick diagnosis via Docker logs
+<details>
+<summary>🔍 Quick diagnosis via Docker logs</summary>
 
 Check live logs to identify the source of a problem:
 
@@ -245,15 +282,20 @@ sudo docker compose logs -f
 
 To exit: `Ctrl + C`
 
+</details>
+
 ---
 
-### 📡 Check NTRIP connection
+<details>
+<summary>📡 Check NTRIP connection</summary>
 
 From the web interface (port `4006`), the NTRIP connection status is visible in real time. In case of disconnection, restart the containers:
 
 ```sh
 sudo docker compose down && sudo docker compose up -d
 ```
+
+</details>
 
 ---
 
