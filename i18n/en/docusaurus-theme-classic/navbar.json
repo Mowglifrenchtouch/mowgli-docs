@@ -1,0 +1,14 @@
+{
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "title": {
+    "message": "Mowgli Docs",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Mowgli Logo",
+    "description": "The alt text of navbar logo"
+  }
+}

@@ -1,10 +1,13 @@
 ---
 title: "🤝 Aide à la contribution"
+sidebar_label: "🤝 Contribuer"
 nav_order: 100
 permalink: /docs/Guide-OpenMower-Mowgli/aide-contribution/
 layout: default
 parent: "🏠 Guide OpenMower"
 ---
+
+import links from '@site/src/data/links';
 
 # 🤝 Aide à la contribution
 
@@ -30,7 +33,7 @@ Voici quelques exemples de contributions possibles :
 
 ### 🔹 Méthode 1 : Depuis GitHub (rapide)
 
-1. Rendez-vous sur la page du guide sur [GitHub](https://github.com/juditech3D/Mowgli-docs)
+1. Rendez-vous sur la page du guide sur <a href={links.community.github} target="_blank">GitHub</a>
 2. Naviguez dans le dossier `docs/Guide-OpenMower-Mowgli/`
 3. Cliquez sur le fichier que vous souhaitez modifier
 4. Cliquez sur ✏️ `Edit this file`
@@ -46,8 +49,8 @@ Voici quelques exemples de contributions possibles :
 Si vous êtes à l’aise avec Git, vous pouvez cloner le dépôt, faire vos modifications, puis envoyer une Pull Request.
 
 ```bash
-git clone https://github.com/juditech3D/Mowgli-docs.git
-cd Mowgli-docs
+git clone https://github.com/Mowglifrenchtouch/mowgli-docs.git
+cd mowgli-docs
 npm install
 npm start
 ```
@@ -69,7 +72,7 @@ npm start
 
 ## 💬 Besoin d’aide ?
 
-Rejoignez la communauté Telegram : [@OpenMower_FR](https://t.me/c/1744099999/1)
+Rejoignez la communauté Telegram : <a href={links.community.telegramFR} target="_blank">@OpenMower_FR</a>
 
 Vous pourrez poser vos questions, discuter des contributions ou proposer des idées !
 

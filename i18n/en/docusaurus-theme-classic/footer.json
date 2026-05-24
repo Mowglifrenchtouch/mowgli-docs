@@ -1,0 +1,10 @@
+{
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Footer link label"
+  },
+  "copyright": {
+    "message": "Copyright © 2026 Juditech3D",
+    "description": "The footer copyright"
+  }
+}

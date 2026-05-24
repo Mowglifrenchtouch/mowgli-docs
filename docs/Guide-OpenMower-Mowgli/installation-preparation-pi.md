@@ -1,5 +1,6 @@
 ---
 title: "💾 Installation & préparation Pi/SD/SSD"
+sidebar_label: "💾 Installation Pi/SD/SSD"
 nav_order: 3
 parent: "🏠 Guide OpenMower"
 layout: default
@@ -127,7 +128,9 @@ Une fois l’IP identifiée, connectez-vous via SSH avec MobaXTerm, PuTTY en lig
 ssh pi@192.168.X.XX
 ```
 
-Par défaut, le mot de passe est `raspberry`.
+:::info Mot de passe
+Depuis **Raspberry Pi OS Bookworm** (2023+), il n’y a plus de mot de passe par défaut. Le nom d’utilisateur et le mot de passe sont définis **pendant la phase de configuration dans Raspberry Pi Imager** (étape "Paramètres OS avancés"). Utilisez les identifiants que vous avez saisis à ce moment.
+:::
 
 ---
 

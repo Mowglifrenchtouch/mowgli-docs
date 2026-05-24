@@ -5,8 +5,12 @@ permalink: /docs/injection-firmware/
 parent: "🏠 Guide OpenMower"
 layout: default
 ---
+
+import links from '@site/src/data/links';
+import YoutubeEmbed from '@site/src/components/YoutubeEmbed';
+
 <div style={{textAlign:"center"}}>
-  <img src="/img/injection_firmware_cover.png" alt="Illustration firmware" style={{maxWidth:"200px", margin:"1rem auto", borderRadius:"10px", boxShadow:"0 2px 6px rgba(0,0,0,0.2)"}} />
+  <img src={require('@site/static/img/injection_firmware_cover.png').default} alt="Illustration firmware" style={{maxWidth:"200px", margin:"1rem auto", borderRadius:"10px", boxShadow:"0 2px 6px rgba(0,0,0,0.2)"}} />
 </div>
 
 
@@ -19,13 +23,14 @@ Avant toute modification, sauvegardez votre firmware actuel avec un **STLINK** (
 <div class="alert-blue">
   <div class="alert-title">ℹ️ Firmware d'origine 500/500B</div>
   <p>Besoin du firmware d'origine ? Le firmware Yardforce 500/500B officiel est disponible ici :<br />
-  <a href="https://mega.nz/folder/icshEICL#QWDtu9Y2y_YmrNRwHSYzbA" target="_blank">🗅️ Télécharger le firmware Yardforce</a></p>
+  <a href={links.hardware.firmwareYardforceOrig} target="_blank">🗅️ Télécharger le firmware Yardforce</a></p>
 </div>
 
 **Branchement STLINK** :
 
-<div style={{textAlign:"center"}}>
-  <img src="/img/branchement_stlink.jpg" alt="Schéma de connexion STLINK" style={{maxWidth:"300px", margin:"auto"}} />
+<div style={{display:"flex", flexDirection:"column", gap:"1.5rem", alignItems:"center", marginTop:"1rem"}}>
+  <img src={require('@site/static/img/stlink-mowgli-500b.jpg').default} alt="Branchement STLINK sur Mowgli 500B" style={{width:"100%", maxWidth:"700px", borderRadius:"8px", boxShadow:"0 2px 6px rgba(0,0,0,0.3)"}} />
+  <img src={require('@site/static/img/stlink-cote-carte-mere.jpg').default} alt="Branchement STLINK côté carte mère" style={{width:"100%", maxWidth:"700px", borderRadius:"8px", boxShadow:"0 2px 6px rgba(0,0,0,0.3)"}} />
 </div>
 
 <div class="alert-blue">
@@ -38,7 +43,7 @@ Avant toute modification, sauvegardez votre firmware actuel avec un **STLINK** (
     ✅ ST Bridge interfaces<br /><br />
     ⚠️ Installation requise avant connexion pour ST-LINK/V2 et V2-1.<br />
     🔹 Facultative pour STLINK-V3 (mais permet de personnaliser les noms des ports COM virtuels).<br /><br />
-    💫 <a href="https://mega.nz/folder/XEdGVTaB#KnQNzVhi9RzjMeEXjzvQ-g" target="_blank">Lien de téléchargement</a>
+    💫 <a href={links.hardware.stlink009drivers} target="_blank">Lien de téléchargement</a>
   </p>
 </div>
 
@@ -54,7 +59,7 @@ Avant toute modification, sauvegardez votre firmware actuel avec un **STLINK** (
     ✅ Gérer les options de programmation et vérifier le contenu<br />
     ✅ Automatiser la programmation via des scripts<br /><br />
     Disponible en interface graphique (GUI) et en ligne de commande (CLI).<br /><br />
-    💫 <a href="https://mega.nz/folder/2ZMHjJhT#DXUiH4I_ma5rL42wuUkJ_Q" target="_blank">Lien de téléchargement</a>
+    💫 <a href={links.hardware.stm32cubeprog} target="_blank">Lien de téléchargement</a>
   </p>
 </div>
 
@@ -62,13 +67,13 @@ Avant toute modification, sauvegardez votre firmware actuel avec un **STLINK** (
 
 # 📀 1. Téléchargement du firmware
 
-**Pour Yardforce 500**  
-🧸 [GitHub - CEDBOSSNEO / Mowgli (main)](https://github.com/cedbossneo/Mowgli/tree/main)
+**Pour Yardforce 500** (panel fonctionnel de base — aucune configuration spécifique requise)  
+🧸 <a href={links.firmware.cedbossneo} target="_blank">GitHub - CEDBOSSNEO / Mowgli (main)</a>
 
 **Lien direct** : [ZIP](https://github.com/cedbossneo/Mowgli/archive/refs/heads/main.zip)
 
-**Pour Yardforce 500B**  
-🧸 [GitHub - Nekraus / Mowgli (yardforce-500b)](https://github.com/Nekraus/Mowgli/tree/yardforce-500b)
+**Pour Yardforce 500B** (firmware spécifique requis pour panel fonctionnel — clavier + voyants)  
+🧸 <a href={links.firmware.nekraus500b} target="_blank">GitHub - Nekraus / Mowgli (yardforce-500b)</a>
 
 **Lien direct** : [ZIP](https://github.com/Nekraus/Mowgli/archive/refs/heads/yardforce-500b.zip)
 
@@ -86,11 +91,7 @@ Avant toute modification, sauvegardez votre firmware actuel avec un **STLINK** (
 
 <div class="alert-blue">
   <div class="alert-title">🎥 Vidéo explicative : Compilation du firmware</div>
-  <p>Regardez directement la vidéo ci-dessous :</p>
-
-  <div style={{position:"relative", paddingBottom:"56.25%", height:0, overflow:"hidden", marginTop:"1rem"}}>
-    <iframe src="https://www.youtube.com/embed/ID_COMPILATION_VIDEO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style={{position:"absolute", top:0, left:0, width:"100%", height:"100%"}}></iframe>
-  </div>
+  <YoutubeEmbed id={links.youtube.firmwareCompilation} title="Compilation du firmware Mowgli" />
 </div>
 
 ---
@@ -101,22 +102,13 @@ Avant toute modification, sauvegardez votre firmware actuel avec un **STLINK** (
 
 <div class="alert-blue">
   <div class="alert-title">🎥 Vidéo explicative : Injection avec VSCode</div>
-  <p>Regardez directement la vidéo ci-dessous :</p>
-
-  <div style={{position:"relative", paddingBottom:"56.25%", height:0, overflow:"hidden", marginTop:"1rem"}}>
-    <iframe src="https://www.youtube.com/embed/ID_VSCODE_VIDEO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style={{position:"absolute", top:0, left:0, width:"100%", height:"100%"}}></iframe>
-  </div>
+  <YoutubeEmbed id={links.youtube.firmwareVSCode} title="Injection du firmware via VSCode" />
 </div>
 
 ## 📁 Option 2 : Via STM32CubeProgrammer
 
-<div class="alert-blue">
-  <div class="alert-title">🎥 Vidéo explicative : Injection avec STM32CubeProgrammer</div>
-  <p>Regardez directement la vidéo ci-dessous :</p>
-
-  <div style={{position:"relative", paddingBottom:"56.25%", height:0, overflow:"hidden", marginTop:"1rem"}}>
-    <iframe src="https://www.youtube.com/embed/ID_CUBEPROG_VIDEO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style={{position:"absolute", top:0, left:0, width:"100%", height:"100%"}}></iframe>
-  </div>
+<div style={{textAlign:"center", marginTop:"1rem"}}>
+  <img src={require('@site/static/img/injection-cubeprogrammer.gif').default} alt="Démonstration injection firmware via STM32CubeProgrammer" style={{maxWidth:"100%", borderRadius:"8px", boxShadow:"0 2px 8px rgba(0,0,0,0.3)"}} />
 </div>
 
 ---

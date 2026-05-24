@@ -16,6 +16,10 @@ const config = {
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],
+    localeConfigs: {
+      fr: { label: 'Français' },
+      en: { label: 'English' },
+    },
   },
 
   presets: [
@@ -40,7 +44,7 @@ const config = {
       title: 'Mowgli Docs',
       logo: {
         alt: 'Mowgli Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
