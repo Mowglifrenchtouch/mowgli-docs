@@ -172,6 +172,60 @@ Validated firmwares for the motherboard only:
 
 ---
 
+### 🔌 USB hub not recognised or unstable
+
+**Symptoms:** GPS or Mowgli are no longer recognised when using a USB hub, or behaviour becomes erratic.
+
+**Cause:** The Raspberry Pi provides limited power on its USB ports. Passive hubs (without their own power supply) may not receive enough current, causing device disconnections or non-detection.
+
+**Solutions:**
+- Use a **powered USB hub** (with external power supply)
+- Test without a hub by connecting the GPS and Mowgli directly to the Raspberry Pi's USB ports
+- If a hub is essential, choose a model with a **dedicated power supply ≥ 2A**
+
+:::tip
+Not all USB hubs are equal. Prefer models with a dedicated external power supply to avoid power-related issues.
+:::
+
+---
+
+### 🔋 Robot won't charge
+
+**Symptoms:** Robot placed on the charging base does not charge — no charge indicator light or no voltage detected.
+
+**Possible cause:** One or more **power connector pins have burned** due to incorrect wiring, a cold solder joint, or insufficient crimping.
+
+**Checks:**
+1. Visually inspect all connectors: **power connectors AND motor connectors**
+2. Look for burn marks, blackening, or melted metal on pins
+3. Verify that each connector is **fully seated** in its housing (clipped in)
+4. Measure voltage at the charge connector terminals with a multimeter
+
+:::warning
+A poorly inserted or partially crimped connector can generate high contact resistance, causing pins to overheat and burn. Always check **all** connectors, not just the charge connector.
+:::
+
+---
+
+### ⚙️ Blade motor not spinning
+
+**Symptoms:** Robot starts and moves, but the blade motor remains inactive.
+
+**Known fix:** Unplugging and replugging all cables from the motherboard resolves the issue in the vast majority of cases.
+
+**Procedure:**
+1. **Turn off** the robot and disconnect the power supply
+2. Unplug **all cables** from the motherboard: power cables, motor cables, communication cables
+3. Wait 30 seconds
+4. Replug **all cables**, making sure each connector clicks into place
+5. Power the robot back on and test
+
+:::tip Field experience
+This procedure has resolved the issue for multiple users without identifying a specific hardware cause. An intermittent connection on one of the motor cables is the most likely culprit.
+:::
+
+---
+
 ## 💡 Tips & Optimisations
 
 ### 🧠 Improve traction on sloped terrain

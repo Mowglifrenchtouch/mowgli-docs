@@ -22,6 +22,19 @@ const config = {
     },
   },
 
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['fr', 'en'],
+        indexDocs: true,
+        indexPages: false,
+        docsRouteBasePath: '/docs',
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',

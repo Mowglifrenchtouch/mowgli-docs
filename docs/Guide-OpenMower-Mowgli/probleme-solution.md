@@ -173,6 +173,60 @@ Firmwares validés pour la carte mère uniquement :
 
 ---
 
+### 🔌 Hub USB non reconnu ou instable
+
+**Symptômes :** Le GPS ou le Mowgli ne sont plus reconnus quand un hub USB est utilisé, ou le comportement devient aléatoire.
+
+**Cause :** Le Raspberry Pi fournit une tension limitée sur ses ports USB. Certains hubs passifs (sans alimentation propre) ne reçoivent pas assez de courant, ce qui provoque des déconnexions ou des non-détections des périphériques.
+
+**Solutions :**
+- Privilégiez un **hub USB alimenté** (avec alimentation externe)
+- Testez sans hub en connectant directement le GPS et le Mowgli sur les ports USB du Raspberry Pi
+- Si un hub est indispensable, choisissez un modèle avec **alimentation propre ≥ 2A**
+
+:::tip
+Tous les hubs USB ne se valent pas. Préférez les modèles avec une alimentation externe dédiée pour éviter les problèmes de puissance.
+:::
+
+---
+
+### 🔋 Le robot ne charge plus
+
+**Symptômes :** Le robot posé sur la base de charge ne se charge pas, voyant de charge absent ou aucune tension mesurée.
+
+**Cause possible :** Un ou plusieurs **pins du connecteur d'alimentation** ont grillé suite à un mauvais câblage, une soudure froide ou un sertissage insuffisant.
+
+**Vérifications :**
+1. Inspectez visuellement tous les connecteurs : **connecteurs d'alimentation ET connecteurs moteur**
+2. Recherchez des traces de brûlure, de noircissement ou de métal fondu sur les pins
+3. Vérifiez que chaque connecteur est **bien enfoncé** dans son boîtier (clipsé)
+4. Mesurez la tension aux bornes du connecteur de charge avec un multimètre
+
+:::warning
+Un connecteur mal inséré ou partiellement sertis peut générer une résistance de contact élevée qui fait chauffer et brûler les pins. Vérifiez systématiquement **tous** les connecteurs, pas seulement celui de charge.
+:::
+
+---
+
+### ⚙️ Le moteur de lame ne tourne pas
+
+**Symptômes :** Le robot démarre, se déplace, mais le moteur de lame reste inactif.
+
+**Solution connue :** Débrancher et rebrancher tous les câbles de la carte mère résout le problème dans la grande majorité des cas.
+
+**Procédure :**
+1. **Éteignez** le robot et débranchez l'alimentation
+2. Débranchez **tous les câbles** de la carte mère : câbles d'alimentation, câbles moteurs, câbles de communication
+3. Attendez 30 secondes
+4. Rebranchez **tous les câbles** en vérifiant que chaque connecteur est bien encliqueté
+5. Remettez le robot sous tension et testez
+
+:::tip Retour d'expérience
+Cette procédure a résolu le problème chez plusieurs utilisateurs sans qu'une cause matérielle spécifique ne soit identifiée. Une connexion intermittente sur un des câbles moteur est la cause la plus probable.
+:::
+
+---
+
 ## 💡 Astuces & Optimisations
 
 ### 🧠 Amélioration de la traction sur terrain pentu
