@@ -1,0 +1,22 @@
+{
+  "sidebar.tutorialSidebar.category.Guide-OpenMower-Mowgli": {
+    "message": "OpenMower Guide",
+    "description": "The label for category Guide-OpenMower-Mowgli in sidebar tutorialSidebar"
+  },
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.🤖 Mowgli V1 — Guide complet": {
+    "message": "🤖 Mowgli V1 — Complete guide",
+    "description": "The label for category Mowgli V1 in sidebar"
+  },
+  "sidebar.tutorialSidebar.category.🤖 Mowgli V2 — Informations": {
+    "message": "🤖 Mowgli V2 — Information",
+    "description": "The label for category Mowgli V2 in sidebar"
+  },
+  "sidebar.tutorialSidebar.category.🚀 Mowglinext — En conception": {
+    "message": "🚀 Mowglinext — In development",
+    "description": "The label for category Mowglinext in sidebar"
+  }
+}

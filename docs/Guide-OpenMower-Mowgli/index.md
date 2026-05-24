@@ -3,6 +3,8 @@ title: "⚠️ Avertissements"
 sidebar_position: 1
 ---
 
+import links from '@site/src/data/links';
+
 ![Illustration avertissement](/img/illustration-avertissements.png)
 # ⚠️ Avertissements
 
@@ -11,10 +13,10 @@ Bienvenue dans ce guide dédié à la transformation de votre robot tondeuse **Y
 :::tip 🔗 Ressources recommandées
 La réussite de votre installation dépend de la compréhension globale du projet. Nous vous conseillons vivement de consulter ces ressources clés :
 
-* [**Documentation OpenMower**](https://openmower.de/docs/robot-assembly/prepare-the-parts/prepare-the-robot/photo-guide/) : Le guide de montage original.
-* [**Fork Mowgli (GitHub)**](https://github.com/cedbossneo/Mowgli) : Le cœur du projet.
-* [**Mowgli Docker**](https://github.com/CedBossNeo/mowgli-docker) : La solution logicielle simplifiée.
-* [**Communauté Telegram (FR)**](https://t.me/+x6U3UwU5lB4yOWNk) : Le groupe d'entraide indispensable.
+* <a href={links.openmower.docs} target="_blank">**Documentation OpenMower**</a> : Le guide de montage original.
+* <a href={links.firmware.cedbossneo} target="_blank">**Fork Mowgli (GitHub)**</a> : Le cœur du projet.
+* <a href={links.firmware.mowgliDocker} target="_blank">**Mowgli Docker**</a> : La solution logicielle simplifiée.
+* <a href={links.community.telegramFR} target="_blank">**Communauté Telegram (FR)**</a> : Le groupe d'entraide indispensable.
 :::
 
 ---

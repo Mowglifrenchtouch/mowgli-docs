@@ -5,6 +5,9 @@ parent: "🏠 Guide OpenMower"
 layout: default
 permalink: /docs/Guide-OpenMower-Mowgli/configuration-systeme/
 ---
+
+import links from '@site/src/data/links';
+
 ![Illustration configuration-systeme](/img/configuration-systeme.png)
 
 <div class="alert alert--warning">
@@ -65,6 +68,8 @@ sudo udevadm trigger
 ## 📅 Étape 4 : Clonage du dépôt
 
 On récupère le code pour la génération des conteneurs Docker.
+
+Dépôt : <a href={links.firmware.mowgliDocker} target="_blank">github.com/cedbossneo/mowgli-docker</a>
 
 ```sh
 sudo apt install git

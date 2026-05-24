@@ -56,11 +56,13 @@ Ce projet repose sur l’utilisation de la carte mère **d’origine** des modè
 
 <h2 id="impressions-3d">🖨️ Pièces imprimées en 3D personnalisées</h2>
 
-Des pièces **sur mesure** (support RPi, support F9P, roues lestables, gyrophare, etc.) ont été **spécialement conçues** pour ce projet.
+Des pièces **sur mesure** (support RPi, support F9P, roues lestables, gyrophare, etc.) ont été **spécialement conçues** pour ce projet par la communauté.
 
-Elles sont disponibles **gratuitement** sur mon profil MakerWorld :
+Elles sont disponibles **gratuitement** sur MakerWorld :
 
-👉 [Profil MakerWorld Juditech3D](https://makerworld.com/en/@juditech3d)
+👉 <a href="https://makerworld.com/en/@juditech3d" target="_blank">Profil MakerWorld Juditech3D</a>
+
+👉 <a href="https://makerworld.com/fr/@user_3228887730" target="_blank">Profil MakerWorld Pepeuch</a>
 
 📦 [Voir la section Impressions 3D](/docs/Guide-OpenMower-Mowgli/impression-3d/)
 
