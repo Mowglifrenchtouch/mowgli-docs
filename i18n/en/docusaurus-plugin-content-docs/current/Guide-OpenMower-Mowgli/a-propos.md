@@ -61,6 +61,7 @@ Many thanks to:
 - [**Nekraus**](https://github.com/Nekraus) — improved firmware with keypad and indicator light support (Yardforce 500B)
 - [**Pepeuch**](https://makerworld.com/fr/@user_3228887730) — 3D parts for hardware integration (RPi+GNSS+F9P support, SA→500B motor adapter) and **active contributor to Mowglinext development**
 - **Etienne (Mowgli PCB)** — design and development of dedicated **PCB boards** for the Mowgli project
+- [**kamaradclimber**](https://github.com/kamaradclimber) — documentation contributions: ST-Link V2 troubleshooting and webui configuration warning
 - The French 🇫🇷 Telegram community for their invaluable help with debugging and user feedback:
   Join the channel 👉 <a href={links.community.telegramFR} target="_blank">**Telegram Mowgli fr**</a>
 

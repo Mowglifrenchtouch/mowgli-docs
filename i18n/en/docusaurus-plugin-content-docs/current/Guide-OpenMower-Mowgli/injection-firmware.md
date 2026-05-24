@@ -32,6 +32,10 @@ Before any modification, back up your current firmware with an **STLINK** (Optio
   <img src="/img/branchement_stlink.jpg" alt="STLINK connection diagram" style={{maxWidth:"300px", margin:"auto"}} />
 </div>
 
+:::warning `init mode failed` error — ST-Link connections
+If you get `Error: init mode failed (unable to connect to the target)`, check your ST-Link V2 connections — they are frequently reversed. If the problem persists despite correct connections, the ST-Link V2 itself may be faulty: documented cases show that replacing the device resolved the issue.
+:::
+
 <div class="alert-blue">
   <div class="alert-title">🗅️ ST-Link Drivers (Windows) - STSW-LINK009</div>
   <p>

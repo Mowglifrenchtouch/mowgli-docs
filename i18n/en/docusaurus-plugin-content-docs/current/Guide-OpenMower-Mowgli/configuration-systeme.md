@@ -77,6 +77,14 @@ git clone https://github.com/cedbossneo/mowgli-docker
 cd mowgli-docker
 ```
 
+:::danger Command line configuration only
+**Modifying configuration through the OpenMower webui interface breaks the system.** Always make changes directly in the configuration files. If you accidentally used the webui, restore the configuration with:
+```sh
+git checkout HEAD -- config/om/mower_config.sh
+```
+Then restart the containers.
+:::
+
 ## ⚙️ Step 5: Environment Configuration
 
 1. Create and edit the `.env` file (you must be in the mowgli-docker directory):

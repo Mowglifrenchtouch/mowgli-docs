@@ -33,6 +33,10 @@ Avant toute modification, sauvegardez votre firmware actuel avec un **STLINK** (
   <img src={require('@site/static/img/stlink-cote-carte-mere.jpg').default} alt="Branchement STLINK côté carte mère" style={{width:"100%", maxWidth:"700px", borderRadius:"8px", boxShadow:"0 2px 6px rgba(0,0,0,0.3)"}} />
 </div>
 
+:::warning Erreur `init mode failed` — connexions ST-Link
+En cas d'erreur `Error: init mode failed (unable to connect to the target)`, vérifiez les connexions du ST-Link V2 — elles sont souvent inversées. Si le problème persiste malgré des connexions correctes, le ST-Link V2 lui-même peut être défectueux : des cas documentés montrent que le remplacement de l'appareil a résolu le problème.
+:::
+
 <div class="alert-blue">
   <div class="alert-title">🗅️ Drivers ST-Link (Windows) - STSW-LINK009</div>
   <p>
